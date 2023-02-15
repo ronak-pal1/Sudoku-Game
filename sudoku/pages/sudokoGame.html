@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SUDOKO GAME</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body{
+                margin: 0px;
+                padding: 0px;
+                background-color: rgb(7, 0, 47);
+            }
+            .container{
+                background-color: white;
+                width: 700px;
+                height: 700px;
+                margin-left: 120px;
+                margin-top: 30px;
+                border-radius: 10px;
+                display: inline-block;
+            }
+
+            .container div{
+                width: 75.5px;
+                height: 75.5px;
+                display: block;
+                border: 1px solid black;
+                border-radius: 3px;
+                cursor: pointer;
+                font-size: 65px;
+                text-align: center;
+                float:left;
+                margin-left: 0.2px;
+                margin-top: 0.2px;
+            }
+
+            .container div:hover{
+                background-color: rgba(184, 184, 184, 0.425);
+            }
+
+            .sideContainer{
+                width: 695px;
+                display: inline-block;
+                position: absolute;
+                margin-top: 30px;
+            }
+
+            .sideContainer .newgameButton{
+                width: 150px;
+                height: 35px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 20px;
+                background-color: rgb(161, 239, 239);
+                border-radius: 20px;
+                font-size: 23px;
+                text-align: center;
+                font-weight: 700;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                cursor: pointer;
+            }
+
+            .sideContainer .heading{
+                width: 400px;
+                height: 130px;
+                background-color: rgb(246, 120, 3);
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 90px;
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                border-radius: 40px;
+                border-top-left-radius: 0px;
+            }
+            .sideContainer .countDiv{
+                width: 400px;
+                height: 130px;
+                background-color: azure;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 90px;
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                border-radius: 40px;
+                border-bottom-right-radius: 0px;
+                margin-top: 4px;
+            }
+            .sideContainer .startButton{
+                width: 150px;
+                height: 50px;
+                background-color: antiquewhite;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 10px;
+                border-radius: 18px;
+                font-size: 40px;
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                cursor: pointer;
+            }
+            .sideContainer .elements{
+                width: fit-content;
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .sideContainer .elements a{
+                text-decoration: none;
+            }
+            .sideContainer .elements a b{
+                font-size: 35px;
+                color: white;
+                margin: 18px;
+                cursor: pointer;
+            }
+
+            .sideContainer .numbers{
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .sideContainer .numbers div{
+                width: 50px;
+                height: 50px;
+                background-color: beige;
+                display: block;
+                float: left;
+                margin:10px;
+                margin-top: 15px;
+                border-radius: 10px;
+                font-size: 40px;
+                text-align: center;
+                font-weight: 700;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+<body>
+    
+    <div class="container">
+
+        <div id="box00" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box01" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box02" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black;"></div>
+        <div id="box03" style="border-left:2px solid black;"></div>
+        <div id="box04" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box05" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black;"></div>
+        <div id="box06" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black;"></div>
+        <div id="box07" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box08" onclick="chooseBoxFun(this.id)"></div>
+
+        <br>
+
+        <div id="box10" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box11" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box12" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black;"></div>
+        <div id="box13" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black;"></div>
+        <div id="box14" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box15" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black;"></div>
+        <div id="box16" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black;"></div>
+        <div id="box17" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box18" onclick="chooseBoxFun(this.id)"></div>
+
+        <br>
+
+        <div id="box20" onclick="chooseBoxFun(this.id)" style="border-bottom:2px solid black;"></div>
+        <div id="box21" onclick="chooseBoxFun(this.id)" style="border-bottom:2px solid black;"></div>
+        <div id="box22" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black; border-bottom:2px solid black;"></div>
+        <div id="box23" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black; border-bottom:2px solid black;"></div>
+        <div id="box24" onclick="chooseBoxFun(this.id)" style="border-bottom:2px solid black;"></div>
+        <div id="box25" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black; border-bottom:2px solid black;"></div>
+        <div id="box26" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black; border-bottom:2px solid black;"></div>
+        <div id="box27" onclick="chooseBoxFun(this.id)" style="border-bottom:2px solid black;"></div>
+        <div id="box28" onclick="chooseBoxFun(this.id)" style="border-bottom:2px solid black;"></div>
+
+        <br>
+
+        <div id="box30" onclick="chooseBoxFun(this.id)" style="border-top:2px solid black;"></div>
+        <div id="box31" onclick="chooseBoxFun(this.id)" style="border-top:2px solid black;"></div>
+        <div id="box32" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black; border-top:2px solid black;"></div>
+        <div id="box33" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black; border-top:2px solid black;"></div>
+        <div id="box34" onclick="chooseBoxFun(this.id)" style="border-top:2px solid black;"></div>
+        <div id="box35" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black; border-top:2px solid black;"></div>
+        <div id="box36" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black; border-top:2px solid black;"></div>
+        <div id="box37" onclick="chooseBoxFun(this.id)" style="border-top:2px solid black;"></div>
+        <div id="box38" onclick="chooseBoxFun(this.id)" style="border-top:2px solid black;"></div>
+
+        <br>
+
+        <div id="box40" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box41" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box42" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black;"></div>
+        <div id="box43" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black;"></div>
+        <div id="box44" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box45" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black;"></div>
+        <div id="box46" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black;"></div>
+        <div id="box47" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box48" onclick="chooseBoxFun(this.id)"></div>
+
+        <br>
+
+        <div id="box50" onclick="chooseBoxFun(this.id)" style="border-bottom:2px solid black;"></div>
+        <div id="box51" onclick="chooseBoxFun(this.id)" style="border-bottom:2px solid black;"></div>
+        <div id="box52" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black; border-bottom:2px solid black;"></div>
+        <div id="box53" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black; border-bottom:2px solid black;"></div>
+        <div id="box54" onclick="chooseBoxFun(this.id)" style="border-bottom:2px solid black;"></div>
+        <div id="box55" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black; border-bottom:2px solid black;"></div>
+        <div id="box56" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black; border-bottom:2px solid black;"></div>
+        <div id="box57" onclick="chooseBoxFun(this.id)" style="border-bottom:2px solid black;"></div>
+        <div id="box58" onclick="chooseBoxFun(this.id)" style="border-bottom:2px solid black;"></div>
+
+        <br>
+
+        <div id="box60" onclick="chooseBoxFun(this.id)" style="border-top:2px solid black;"></div>
+        <div id="box61" onclick="chooseBoxFun(this.id)" style="border-top:2px solid black;"></div>
+        <div id="box62" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black; border-top:2px solid black;"></div>
+        <div id="box63" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black; border-top:2px solid black;"></div>
+        <div id="box64" onclick="chooseBoxFun(this.id)" style="border-top:2px solid black;"></div>
+        <div id="box65" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black; border-top:2px solid black;"></div>
+        <div id="box66" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black; border-top:2px solid black;"></div>
+        <div id="box67" onclick="chooseBoxFun(this.id)" style="border-top:2px solid black;"></div>
+        <div id="box68" onclick="chooseBoxFun(this.id)" style="border-top:2px solid black;"></div>
+
+        <br>
+
+        <div id="box70" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box71" onclick="chooseBoxFun(this.id)" ></div>
+        <div id="box72" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black;"></div>
+        <div id="box73" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black;"></div>
+        <div id="box74" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box75" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black;"></div>
+        <div id="box76" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black;"></div>
+        <div id="box77" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box78" onclick="chooseBoxFun(this.id)"></div>
+
+        <br>
+
+        <div id="box80" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box81" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box82" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black;"></div>
+        <div id="box83" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black;"></div>
+        <div id="box84" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box85" onclick="chooseBoxFun(this.id)" style="border-right:2px solid black;"></div>
+        <div id="box86" onclick="chooseBoxFun(this.id)" style="border-left:2px solid black;"></div>
+        <div id="box87" onclick="chooseBoxFun(this.id)"></div>
+        <div id="box88" onclick="chooseBoxFun(this.id)"></div>
+
+
+    </div>
+
+    <div class="sideContainer">
+        <div class="newgameButton" onclick="puzzle()">NEW GAME</div>
+        <div class="heading">TIMER</div>
+        <div class="countDiv" id="countDivId">00:00:00</div>
+        <div class="startButton" onclick="timer(setInterval(timer,1000))">START</div>
+
+        <div class="elements">
+            <a href="../index.html"><b>&#127968;</b></a>
+        </div>
+
+        <div class="numbers">
+            <div id="num1" onclick="chooseNumberFun(this.id)">1</div>
+            <div id="num2" onclick="chooseNumberFun(this.id)">2</div>
+            <div id="num3" onclick="chooseNumberFun(this.id)">3</div>
+            <br>
+            <div id="num4" onclick="chooseNumberFun(this.id)">4</div>
+            <div id="num5" onclick="chooseNumberFun(this.id)">5</div>
+            <div id="num6" onclick="chooseNumberFun(this.id)">6</div>
+            <br>
+            <div id="num7" onclick="chooseNumberFun(this.id)">7</div>
+            <div id="num8" onclick="chooseNumberFun(this.id)">8</div>
+            <div id="num9" onclick="chooseNumberFun(this.id)">9</div>
+        </div>
+    </div>
+
+    <script src="..\script\sudokoGame.js"></script>
+</body>
+</html>
